@@ -22,7 +22,7 @@ void * tarefa(void *arg) {
    for(int i=args->id; i<args->dim; i+=nthreads){
       	for(int j=0; j<args->dim; j++){
 		for(int k=0;k<args->dim;k++){
-	   		saidaCon[i*(args->dim)+j] += mat1[k*(args->dim)+j] * mat1[k]; 		
+	   		saidaCon[i*(args->dim)+j] += mat1[i*(args->dim)+k] * mat1[k*(args-dim)+j]; 		
       		} 
       	}
    }
@@ -34,7 +34,7 @@ void multiplicaMatrizSeq(int dim){
 	for(int i =0;i<dim;i++){
 		for(int j=0;j<dim;j++){
 			for(int k=0; k<dim;k++){
-				saidaSeq[i*dim+j] += mat1[k*dim+j] * mat1[k];
+				saidaSeq[i*dim+j] += mat1[i*dim+k] * mat1[k*dim+j];
 			}
 		}
 	}
