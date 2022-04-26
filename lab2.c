@@ -112,7 +112,21 @@ int main(int argc, char* argv[]) {
    float seqT = delta;
    printf("Tempo multiplicacao sequencial: %lf\n", delta);
 
-   printf("A multiplicação de forma concorrente é  %lf\n vezes mais rápida do que a sequencial", (seqT/concT));
+   printf("A multiplicação de forma concorrente é  %lf vezes mais rápida do que a sequencial\n", (seqT/concT));
+
+   for(int i =0;i<dim;i++){
+                for(int j=0;j<dim;j++){
+                        for(int k=0; k<dim;k++){
+                                if(saidaSeq[i*dim+j] != saidaCon[i*dim+j]){
+					printf("As matrizes de saída ficaram diferentes. Há um erro no código");
+					exit(1);
+				}
+                        }
+                }
+        }
+
+   printf("As matrizes resultantes da multiplicação sequencial e concorrente foram comparadas e estão iguais.\n");
+
 
    //liberacao da memoria
    free(mat1);
