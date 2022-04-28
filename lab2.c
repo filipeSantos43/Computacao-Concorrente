@@ -22,7 +22,7 @@ void * tarefa(void *arg) {
    for(int i=args->id; i<args->dim; i+=nthreads){
       	for(int j=0; j<args->dim; j++){
 		for(int k=0;k<args->dim;k++){
-	   		saidaCon[i*(args->dim)+j] += mat1[i*(args->dim)+k] * mat1[k*(args-dim)+j]; 		
+	   		saidaCon[i*(args->dim)+j] += mat1[i*(args->dim)+k] * mat1[k*(args->dim)+j]; 		
       		} 
       	}
    }
@@ -66,8 +66,9 @@ int main(int argc, char* argv[]) {
 
    //inicializacao das estruturas de dados de entrada e saida
    for(int i=0; i<dim; i++) {
+			srand(time(NULL));
       for(int j=0; j<dim; j++){
-      	mat1[i*dim+j] = 1;    //equivalente mat[i][j]
+      	mat1[i*dim+j] = rand()%1000;    //equivalente mat[i][j]
       	saidaSeq[i*dim+j] = 0; 
       	saidaCon[i*dim+j] = 0;
       }
